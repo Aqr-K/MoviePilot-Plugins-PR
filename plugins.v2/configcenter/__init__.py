@@ -770,7 +770,7 @@ class ConfigCenter(_PluginBase):
                                                 "props": {
                                                     "model": "META_CACHE_EXPIRE",
                                                     "label": "元数据缓存时间",
-                                                    "hint": "为0时，使用系统默认缓存时间",
+                                                    "hint": "0或负值时，使用系统默认缓存时间",
                                                     "persistent-hint": True,
                                                     "prefix": "每",
                                                     "suffix": "小时",
