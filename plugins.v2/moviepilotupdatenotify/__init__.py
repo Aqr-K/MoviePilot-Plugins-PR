@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 from app.chain.system import SystemChain
-from app.core.config import settings
+from app.core.config import global_vars, settings
 from app.helper.system import SystemHelper
 from app.log import logger
 from app.plugins import _PluginBase
@@ -70,6 +70,9 @@ class MoviePilotUpdateNotify(_PluginBase):
         # 自动重启
         if (server_update or front_update) and self._restart:
             logger.info("开始执行自动重启…")
+            # 标识停止事件
+            global_vars.stop_system()
+            # 执行重启
             SystemHelper.restart()
 
     def __check_server_update(self):
